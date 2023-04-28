@@ -8,8 +8,12 @@ import { AppModule } from './app.module';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 import { AllExceptionsFilter } from './common/exceptions/base.exception.filter';
 import { HttpExceptionFilter } from './common/exceptions/http.exception.filter';
-
+declare const module: any;
 async function bootstrap() {
+  if (module.hot) {
+    module.hot.accept();
+    module.hot.dispose(() => app.close());
+  }
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter(),
@@ -21,7 +25,7 @@ async function bootstrap() {
     type: VersioningType.URI,
   });
   //统一响应体格式
-  app.useGlobalInterceptors(new TransformInterceptor)
+  app.useGlobalInterceptors(new TransformInterceptor());
   app.useGlobalFilters(new AllExceptionsFilter(), new HttpExceptionFilter());
   await app.listen(3000);
 }
