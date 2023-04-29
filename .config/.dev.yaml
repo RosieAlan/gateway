@@ -1,2 +1,8 @@
 TEST_VALUE:
-  name: cookiiiiiiiiiiiiiie
+name: cookiiiiiiiiiiiiiie
+FEISHU_CONFIG:
+FEISHU_URL: https://open.feishu.cn/open-apis
+FEISHU_API_HOST: https://open.feishu.cn
+FEISHU_APP_ID: cli_a4c63d7941b8d00e
+FEISHU_APP_SECRET: L78yF7nZlrFvLQYTciwZmczBbmxjkKzB
+APP_TOKEN_CACHE_KEY: APP_TOKEN_CACHE_KEY
